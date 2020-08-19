@@ -9,7 +9,7 @@ import CurrentStorage from "./currentStorage";
 
 const Dashboard = () => {
   const [isMenuOpen, setMenuOStatus] = useState<boolean>(false);
-  const [currentIndex, setIndex] = useState<number>(1);
+  const [currentIndex, setIndex] = useState<number>();
 
   const onPressMenu = () => {
     setMenuOStatus(!isMenuOpen);
