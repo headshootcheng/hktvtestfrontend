@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+import Button from "@material-ui/core/Button";
+import ErrorIcon from "@material-ui/icons/Error";
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 const ProductCreation = () => {
   const [file, setFile] = useState<any>({});
+  const [error, setError] = useState<boolean>(false);
+  const [success, setSuccess] = useState<boolean>(false);
+  const [message, setMessage] = useState<string>("");
 
   const ChangeFileName = (event: any) => {
     console.log(event.target.files[0]);
@@ -18,6 +23,14 @@ const ProductCreation = () => {
       "http://127.0.0.1:8080/uploadProduct",
       csv
     );
+    if (data.type === 1) {
+      setSuccess(true);
+    }
+
+    if (data.type === 0) {
+      setError(true);
+    }
+    setMessage(data.content);
     console.log(data);
   };
 
@@ -55,11 +68,41 @@ const ProductCreation = () => {
           onChange={ChangeFileName}
         />
         <br />
-        <input
+        <Button
+          variant="contained"
+          color="primary"
           onClick={SubmitFile}
-          value="Upload"
-          style={{ marginTop: 20, height: 50, width: 200 }}
-        />
+          style={{ width: 200 }}
+        >
+          Upload
+        </Button>
+        <br />
+        {error ? (
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              color: "red",
+            }}
+          >
+            <ErrorIcon />
+            <span>{message}</span>
+          </div>
+        ) : null}
+        {success ? (
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              color: "green",
+            }}
+          >
+            <CheckCircleIcon />
+            <span>{message}</span>
+          </div>
+        ) : null}
       </form>
     </div>
   );
