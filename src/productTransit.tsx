@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const CurrentStorage = () => {
+const ProductTransit = () => {
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
-      CurrentStorage
+      Product Transit
     </div>
   );
 };
 
-export default CurrentStorage;
+export default ProductTransit;

@@ -4,7 +4,9 @@ import Topbar from "./components/topbar";
 import SideMenu from "./components/sidebar";
 import HomePage from "./homepage";
 import ProductCreation from "./productCreate";
+import AddNewLocation from "./addNewLocation";
 import AddToLocation from "./addtoLocation";
+import ProductTransit from "./productTransit";
 import CurrentStorage from "./currentStorage";
 
 const Dashboard = () => {
@@ -25,8 +27,12 @@ const Dashboard = () => {
       case 1:
         return <ProductCreation />;
       case 2:
-        return <AddToLocation />;
+        return <AddNewLocation />;
       case 3:
+        return <AddToLocation />;
+      case 4:
+        return <ProductTransit />;
+      case 5:
         return <CurrentStorage />;
       default:
         return <HomePage />;
@@ -39,12 +45,17 @@ const Dashboard = () => {
   const goToProductCreation = () => {
     setIndex(1);
   };
-  const goToLocation = () => {
+  const gotoAddNewLocation = () => {
     setIndex(2);
   };
-
-  const goToStorage = () => {
+  const goToAddToLocation = () => {
     setIndex(3);
+  };
+  const goToProductTransit = () => {
+    setIndex(4);
+  };
+  const goToStorage = () => {
+    setIndex(5);
   };
 
   return (
@@ -56,7 +67,9 @@ const Dashboard = () => {
           onCloseMenu={onCloseMenu}
           goToHomePage={goToHomePage}
           goToProductCreation={goToProductCreation}
-          goToLocation={goToLocation}
+          goToAddNewLocation={gotoAddNewLocation}
+          goToAddToLocation={goToAddToLocation}
+          goToProductTransit={goToProductTransit}
           goToStorage={goToStorage}
         />
         {contentPage()}

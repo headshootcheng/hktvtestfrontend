@@ -1,25 +1,29 @@
 import React from "react";
 import Drawer from "@material-ui/core/Drawer";
-import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import HomeIcon from "@material-ui/icons/Home";
 import AddIcon from "@material-ui/icons/Add";
+import TransferWithinAStationIcon from "@material-ui/icons/TransferWithinAStation";
 import StorageIcon from "@material-ui/icons/Storage";
 const SideMenu: React.FC<{
   isMenuOpen: boolean;
   onCloseMenu: () => void;
   goToHomePage: () => void;
   goToProductCreation: () => void;
-  goToLocation: () => void;
+  goToAddNewLocation: () => void;
+  goToAddToLocation: () => void;
+  goToProductTransit: () => void;
   goToStorage: () => void;
 }> = ({
   isMenuOpen,
   onCloseMenu,
   goToHomePage,
   goToProductCreation,
-  goToLocation,
+  goToAddNewLocation,
+  goToAddToLocation,
+  goToProductTransit,
   goToStorage,
 }) => {
   const list = (onCloseMenu: () => void) => {
@@ -39,11 +43,25 @@ const SideMenu: React.FC<{
           <ListItemText primary="Create Product" />
         </ListItem>
 
-        <ListItem button style={{ marginTop: 4 }} onClick={goToLocation}>
+        <ListItem button style={{ marginTop: 4 }} onClick={goToAddNewLocation}>
+          <ListItemIcon>
+            <AddIcon />
+          </ListItemIcon>
+          <ListItemText primary="Add New Location" />
+        </ListItem>
+
+        <ListItem button style={{ marginTop: 4 }} onClick={goToAddToLocation}>
           <ListItemIcon>
             <AddIcon />
           </ListItemIcon>
           <ListItemText primary="Add Product to Location" />
+        </ListItem>
+
+        <ListItem button style={{ marginTop: 4 }} onClick={goToProductTransit}>
+          <ListItemIcon>
+            <TransferWithinAStationIcon />
+          </ListItemIcon>
+          <ListItemText primary="Product Transit" />
         </ListItem>
 
         <ListItem button style={{ marginTop: 4 }} onClick={goToStorage}>

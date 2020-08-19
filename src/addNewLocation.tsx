@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const CurrentStorage = () => {
+const AddNewLocation = () => {
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
-      CurrentStorage
+      Add New Location
     </div>
   );
 };
 
-export default CurrentStorage;
+export default AddNewLocation;
