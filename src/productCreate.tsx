@@ -9,21 +9,17 @@ const ProductCreation = () => {
     setFile(event.target.files[0]);
   };
 
-  // submiticon = async (event) => {
-  //   event.preventDefault();
-  //   console.log("file info:" + this.state.file);
-  //   const icon = new FormData();
-  //   icon.append("file", this.state.file);
-  //   const { data } = await axios.post(
-  //     "http://127.0.0.1:5000/service/icon",
-  //     icon,
-  //     { headers: { Authorization: "Bearer " + Cookies.get("token") } }
-  //   );
-  //   if (data.msg == "success") {
-  //     this.setState({ icon: "normal" });
-  //     window.location.reload();
-  //   }
-  // };
+  const SubmitFile = async (event: any) => {
+    event.preventDefault();
+    console.log("file info:" + file);
+    const csv = new FormData();
+    csv.append("file", file);
+    const { data } = await axios.post(
+      "http://127.0.0.1:8080/uploadProduct",
+      csv
+    );
+    console.log(data);
+  };
 
   return (
     <div
@@ -55,11 +51,12 @@ const ProductCreation = () => {
           name="usericon"
           id="files"
           type="file"
+          accept=".csv"
           onChange={ChangeFileName}
         />
         <br />
         <input
-          type="submit"
+          onClick={SubmitFile}
           value="Upload"
           style={{ marginTop: 20, height: 50, width: 200 }}
         />
