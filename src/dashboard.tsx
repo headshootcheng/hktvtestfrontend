@@ -20,6 +20,7 @@ const Dashboard = () => {
   const onCloseMenu = () => {
     setMenuOStatus(false);
   };
+
   const contentPage = () => {
     switch (currentIndex) {
       case 0:
