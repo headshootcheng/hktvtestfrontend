@@ -20,7 +20,7 @@ import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import LastPageIcon from "@material-ui/icons/LastPage";
 import TableHead from "@material-ui/core/TableHead";
-
+import axios from "axios";
 const useStyles1 = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -40,7 +40,7 @@ interface TablePaginationActionsProps {
   ) => void;
 }
 
-function TablePaginationActions(props: TablePaginationActionsProps) {
+const TablePaginationActions = (props: TablePaginationActionsProps) => {
   const classes = useStyles1();
   const theme = useTheme();
   const { count, page, rowsPerPage, onChangePage } = props;
@@ -109,17 +109,7 @@ function TablePaginationActions(props: TablePaginationActionsProps) {
       </IconButton>
     </div>
   );
-}
-
-function createData(name: string, calories: number, fat: number) {
-  return { name, calories, fat };
-}
-
-const rows = [
-  createData("Cupcake", 305, 3.76433),
-  createData("Donut", 452, 25.0),
-  createData("Eclair", 262, 16.0),
-];
+};
 
 const useStyles2 = makeStyles({
   table: {
@@ -131,6 +121,19 @@ const CurrentStorage = () => {
   const classes = useStyles2();
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [rows, setRows] = useState([]);
+
+  const getCurrentStorage = async () => {
+    const { data } = await axios.get(
+      "http://127.0.0.1:8080/provideStorage",
+      {}
+    );
+    setRows(data);
+  };
+
+  useEffect(() => {
+    getCurrentStorage();
+  }, []);
 
   const emptyRows =
     rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
@@ -176,28 +179,29 @@ const CurrentStorage = () => {
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
-            <StyledTableCell>Dessert (100g serving)</StyledTableCell>
-            <StyledTableCell>Calories</StyledTableCell>
-            <StyledTableCell>Fat&nbsp;(g)</StyledTableCell>
+            <StyledTableCell>Product ID</StyledTableCell>
+            <StyledTableCell>Quantity</StyledTableCell>
+            <StyledTableCell>Location</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {(rowsPerPage > 0
-            ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            : rows
-          ).map((row) => (
-            <StyledTableRow key={row.name}>
-              <StyledTableCell component="th" scope="row">
-                {row.name}
-              </StyledTableCell>
-              <StyledTableCell component="th" scope="row">
-                {row.calories}
-              </StyledTableCell>
-              <StyledTableCell component="th" scope="row">
-                {row.fat}
-              </StyledTableCell>
-            </StyledTableRow>
-          ))}
+          {rows.length > 0 &&
+            (rowsPerPage > 0
+              ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              : rows
+            ).map(({ code, qty, location }) => (
+              <StyledTableRow>
+                <StyledTableCell component="th" scope="row">
+                  {code}
+                </StyledTableCell>
+                <StyledTableCell component="th" scope="row">
+                  {qty}
+                </StyledTableCell>
+                <StyledTableCell component="th" scope="row">
+                  {location}
+                </StyledTableCell>
+              </StyledTableRow>
+            ))}
           {emptyRows > 0 && (
             <StyledTableRow style={{ height: 53 * emptyRows }}>
               <StyledTableCell colSpan={6} />
