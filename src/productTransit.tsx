@@ -14,7 +14,8 @@ const ProductTransit = () => {
   const [message, setMessage] = useState<string>("");
   const [locationOption, setLocationOption] = useState<string[]>([]);
   const [productOption, setProductOption] = useState<string[]>([]);
-  const [currentLocation, setLocation] = useState<string>("");
+  const [fromLocation, setFromLocation] = useState<string>("");
+  const [toLocation, setToLocation] = useState<string>("");
   const [currentProduct, setProduct] = useState<string>("");
   const [currentQty, setQty] = useState<number>(0);
 
@@ -44,13 +45,14 @@ const ProductTransit = () => {
   };
 
   const SubmitTransit = async (event: any) => {
-    if (currentLocation === "" || currentProduct === "") {
+    if (fromLocation === "" || toLocation === "" || currentProduct === "") {
       setError(true);
       setMessage("Cannot be Empty!!!");
     } else {
       const { data } = await axios.post("http://127.0.0.1:8080/manageStorage", {
         productId: currentProduct,
-        location: currentLocation,
+        fromLocation: fromLocation,
+        toLocation: toLocation,
         qty: currentQty,
       });
       if (data.type === 1) {
@@ -121,6 +123,7 @@ const ProductTransit = () => {
           value={currentQty}
           onChange={(event) => handleQty(parseInt(event.target.value))}
         />
+
         <div
           style={{
             marginTop: 20,
@@ -129,12 +132,33 @@ const ProductTransit = () => {
             alignItems: "center",
           }}
         >
-          <InputLabel>Location</InputLabel>
+          <InputLabel>From Location</InputLabel>
           <TextField
             select
             style={{ marginLeft: 5, width: 120 }}
-            value={currentLocation}
-            onChange={(event) => setLocation(event.target.value)}
+            value={fromLocation}
+            onChange={(event) => setFromLocation(event.target.value)}
+          >
+            {locationOption.map((option, index) => (
+              <MenuItem value={option}>{option}</MenuItem>
+            ))}
+          </TextField>
+        </div>
+
+        <div
+          style={{
+            marginTop: 20,
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+          }}
+        >
+          <InputLabel>To Location</InputLabel>
+          <TextField
+            select
+            style={{ marginLeft: 5, width: 120 }}
+            value={toLocation}
+            onChange={(event) => setToLocation(event.target.value)}
           >
             {locationOption.map((option, index) => (
               <MenuItem value={option}>{option}</MenuItem>
