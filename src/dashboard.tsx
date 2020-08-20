@@ -11,7 +11,7 @@ import CurrentStorage from "./currentStorage";
 
 const Dashboard = () => {
   const [isMenuOpen, setMenuOStatus] = useState<boolean>(false);
-  const [currentIndex, setIndex] = useState<number>(5);
+  const [currentIndex, setIndex] = useState<number>();
 
   const onPressMenu = () => {
     setMenuOStatus(!isMenuOpen);
@@ -59,9 +59,22 @@ const Dashboard = () => {
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        height: "100vh",
+      }}
+    >
       <Topbar username="test" onPressMenu={onPressMenu} />
-      <div style={{ flex: 1, display: "flex", flexDirection: "row" }}>
+      <div
+        style={{
+          flex: 1,
+          display: "flex",
+          flexDirection: "row",
+          height: "100%",
+        }}
+      >
         <SideMenu
           isMenuOpen={isMenuOpen}
           onCloseMenu={onCloseMenu}

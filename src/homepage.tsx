@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 
 const HomePage = () => {
   return (
-    <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
-      HomePage
-    </div>
+    <div
+      style={{
+        flex: 1,
+        height: "100%",
+        backgroundImage: `url(${require("./image/hktvBackground.jpg")})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    ></div>
   );
 };
 
