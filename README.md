@@ -41,3 +41,6 @@ Format: product code, quantity, location name.
 5. Storage Listing
 ![storageList](https://user-images.githubusercontent.com/46919822/90865359-db444100-e3c4-11ea-880b-dd189eac81d3.jpg)
 
+## Contact
+
+If you have any question, welcome to send email to me (petercheng7788@gmail.com)
