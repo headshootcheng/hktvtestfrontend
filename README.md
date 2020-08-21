@@ -26,7 +26,7 @@ Format: product code, quantity, location name.
 5. If you can compile successfully , you can visit http://localhost:3000 to see the homepage 
 ![home](https://user-images.githubusercontent.com/46919822/90864940-31fd4b00-e3c4-11ea-92cf-9ce895ac4854.jpg)
 
-## Expected Result
+## Expected Result (Remember to test upload new product function and add new location function first!!!!!)
 
 1. Upload New Product
 ![productCreation](https://user-images.githubusercontent.com/46919822/90865592-278f8100-e3c5-11ea-96bc-abc6aa6aa54a.jpg)
