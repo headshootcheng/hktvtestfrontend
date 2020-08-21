@@ -30,19 +30,14 @@ Format: product code, quantity, location name.
 
 1. Upload New Product
 
-
 2. Add New Location
-
-
-
+![newLocation](https://user-images.githubusercontent.com/46919822/90865316-cbc4f800-e3c4-11ea-9af7-1fb694445614.jpg)
 3. Upload New Storage
-
-
+![AddproductToLocation](https://user-images.githubusercontent.com/46919822/90865341-d4b5c980-e3c4-11ea-91fa-90d34bbfee98.jpg)
 
 4. Product Transition
-
-
+![productTransit](https://user-images.githubusercontent.com/46919822/90865351-d8495080-e3c4-11ea-9e86-5decbdb117a3.jpg)
 
 5. Storage Listing
-
+![storageList](https://user-images.githubusercontent.com/46919822/90865359-db444100-e3c4-11ea-880b-dd189eac81d3.jpg)
 
