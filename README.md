@@ -7,7 +7,9 @@ React: version 16.13.1.
 
 ## Action
 
-1. Prepare your storage.csv and product.csv, you can take my sample as a reference
+1. Finished all the steps of hktvbackend. 
+
+2. Prepare your storage.csv and product.csv, you can take my sample as a reference
 
 <img width="657" alt="螢幕截圖 2020-08-21 下午3 29 08" src="https://user-images.githubusercontent.com/46919822/90864413-337a4380-e3c3-11ea-89e6-c78129126c9b.png">
 
@@ -17,9 +19,30 @@ Format: product name, product code , weight
 
 Format: product code, quantity, location name. 
 
-2. Run command - npm install in the folder to install node_modules. 
+3. Run command - npm install in the folder to install node_modules. 
 
-3. Run command - npm start. 
+4. Run command - npm start. 
 
-4. If you can compile successfully , you can visit http://localhost:3000 to see the homepage 
+5. If you can compile successfully , you can visit http://localhost:3000 to see the homepage 
+![home](https://user-images.githubusercontent.com/46919822/90864940-31fd4b00-e3c4-11ea-92cf-9ce895ac4854.jpg)
+
+## Expected Result
+
+1. Upload New Product
+
+
+2. Add New Location
+
+
+
+3. Upload New Storage
+
+
+
+4. Product Transition
+
+
+
+5. Storage Listing
+
 
