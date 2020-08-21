@@ -29,7 +29,7 @@ Format: product code, quantity, location name.
 ## Expected Result
 
 1. Upload New Product
-
+![productCreation](https://user-images.githubusercontent.com/46919822/90865592-278f8100-e3c5-11ea-96bc-abc6aa6aa54a.jpg)
 2. Add New Location
 ![newLocation](https://user-images.githubusercontent.com/46919822/90865316-cbc4f800-e3c4-11ea-9af7-1fb694445614.jpg)
 3. Upload New Storage
